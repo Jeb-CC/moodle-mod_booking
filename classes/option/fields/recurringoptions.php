@@ -409,7 +409,9 @@ class recurringoptions extends field_base {
             $delta = $data->howoftentorepeat;
             for ($i = 1; $i <= $data->howmanytimestorepeat; $i++) {
                 // Handle dates.
-                unset($templateoption->id, $templateoption->identifier, $templateoption->optionid);
+                $templateoption->id = 0;
+                $templateoption->optionid = 0;
+                unset($templateoption->identifier);
                 foreach ($newoptiondates as $newoptiondate) {
                     $key = MOD_BOOKING_FORM_OPTIONDATEID . $newoptiondate["index"];
                     $templateoption->{$key} = 0;
