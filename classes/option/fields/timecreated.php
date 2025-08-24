@@ -95,14 +95,12 @@ class timecreated extends field_base {
     ): array {
         parent::prepare_save_field($formdata, $newoption, $updateparam, 0);
 
-        $optionid = $formdata->optionid;
-
-        if ($optionid == 0) {
+        if (empty($formdata->optionid)) {
             // The option is new.
             $newoption->timecreated = time();
         } else {
             // It's an existing option.
-            $settings = singleton_service::get_instance_of_booking_option_settings($optionid);
+            $settings = singleton_service::get_instance_of_booking_option_settings($formdata->optionid);
             if (empty($settings->timecreated)) {
                 if (!empty($settings->timemodified)) {
                     $newoption->timecreated = $settings->timemodified;
