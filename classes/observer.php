@@ -467,7 +467,6 @@ class mod_booking_observer {
                 $bookingoption = singleton_service::get_instance_of_booking_option($settings->cmid, $settings->id);
                 if (empty($bookedanswer->completion)) {
                     $bookingoption->toggle_user_completion($bookedanswer->userid);
-
                 }
             }
         }
